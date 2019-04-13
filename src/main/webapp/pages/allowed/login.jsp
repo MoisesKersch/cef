@@ -2,29 +2,18 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Serein Premium Bootstrap Admin Dashboard Template</title>
-    <!-- plugins:css -->
+    <title>Dogs And Serelepes</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/serein/template/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/serein/template/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/serein/template/vendors/css/vendor.bundle.addons.css">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/serein/template/css/horizontal-layout/style.css">
-
-    <!-- endinject -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/serein/template/images/favicon.png" />
 </head>
-
 <body>
 <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -75,18 +64,7 @@
     </div>
     <!-- page-body-wrapper ends -->
 </div>
-<!-- container-scroller -->
-<!-- plugins:js -->
-<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/vendor.bundle.base.js"></script>
-<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/vendor.bundle.addons.js"></script>
-<!-- endinject -->
-<!-- inject:js -->
-<script src="${pageContext.request.contextPath}/resources/serein/template/js/off-canvas.js"></script>
-<script src="${pageContext.request.contextPath}/resources/serein/template/js/hoverable-collapse.js"></script>
-<script src="${pageContext.request.contextPath}/resources/serein/template/js/template.js"></script>
-<script src="${pageContext.request.contextPath}/resources/serein/template/js/settings.js"></script>
-<script src="${pageContext.request.contextPath}/resources/serein/template/js/todolist.js"></script>
-<!-- endinject -->
+<jsp:include page="../../template/js.jsp"></jsp:include>
 </body>
 
 </html>
