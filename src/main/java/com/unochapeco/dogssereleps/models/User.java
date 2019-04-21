@@ -17,21 +17,27 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 80)
-    private String name;
+    @NotNull
+    @Column(name = "nome", length = 80)
+    private String nome;
 
+    @NotNull
     @Column(name = "email", unique = true, length = 255)
     private String email;
 
-    @Column(name = "zipcode", length = 80)
-    private String zipcode;
+    @NotNull
+    @Column(name = "cep", length = 80)
+    private String cep;
 
-    @Column(name = "city", length = 80)
-    private String city;
+    @NotNull
+    @Column(name = "cidade", length = 80)
+    private String cidade;
 
-    @Column(name = "cellphone", length = 20)
-    private String cellphone;
+    @NotNull
+    @Column(name = "telefone", length = 20)
+    private String telefone;
 
-    @Column(name = "password", length = 20)
-    private String password;
+    @NotNull
+    @Column(name = "senha", length = 20)
+    private String senha;
 }

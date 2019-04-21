@@ -22,30 +22,36 @@
                         </div>
                         <h4>Novo por aqui?</h4>
                         <h6 class="font-weight-light">Cadastre-se, é muito simples e rápido.</h6>
-                        <form class="pt-3">
+                        <form class="pt-3" id="${formId}">
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Nome">
+                                <input type="text" class="form-control form-control-lg" id="nome" name="nome" placeholder="Nome*" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+                                <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Email*" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" id="telefone" name="telefone" placeholder="Telefone*" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" id="zipcode" placeholder="Cep">
+                                <input type="text" class="form-control form-control-lg" id="cep" name="cep" placeholder="Cep*" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" id="city" placeholder="Começe a digitar o nome de sua cidade...">
+                                <input type="text" class="form-control form-control-lg typeahead-basic" id="cidades" name="cidade" placeholder="Começe a digitar o nome de sua cidade..." required>
                             </div>
 
+                            <input type="hidden" id="cidadeId">
+
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Senha">
+                                <input type="password" class="form-control form-control-lg" id="senha" name="senha" placeholder="Senha*" required>
                              </div>
 
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1=2" placeholder="Password">
+                                <input type="password" class="form-control form-control-lg" id="senha2" name="senha2" placeholder="Repetir Senha" required>
                             </div>
-
                             <div class="mb-4">
                                 <div class="form-check">
                                     <label class="form-check-label text-muted">
@@ -55,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="mt-3">
-                                <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">Enviar</a>
+                                <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Enviar</button>
                             </div>
                             <div class="text-center mt-4 font-weight-light">
                                 Já está cadastrado? <a href="login.html" class="text-primary">Login</a>
@@ -70,7 +76,11 @@
     <!-- page-body-wrapper ends -->
 </div>
 <jsp:include page="../../template/js.jsp"></jsp:include>
-<script src="${pageContext.request.contextPath}/resources/serein/template/js/${js.jsp}"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/typehead/typeahead.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/typehead/bloodhound.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/typehead/handlebars.js"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/js/pages/${js}"></script>
 </body>
 
 </html>
+
