@@ -25,34 +25,29 @@
                             <div class="brand-logo">
                                 <img src="${pageContext.request.contextPath}/resources/serein/template/images/logo.svg" alt="logo">
                             </div>
-                            <h4>Hello! let's get started</h4>
-                            <h6 class="font-weight-light">Sign in to continue.</h6>
-                            <form class="pt-3">
+                            <h4>Olá! Seja bem vindo ao Dog's and Serelep's</h4>
+                            <h6 class="font-weight-light">Faça seu login para continuar.</h6>
+                            <form class="pt-3" action="${pageContext.request.contextPath}/login" method="post" id="${formId}">
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="senha" placeholder="Senha">
                                 </div>
                                 <div class="mt-3">
-                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                                    <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">ENTRAR</button>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
                                         <label class="form-check-label text-muted">
                                             <input type="checkbox" class="form-check-input">
-                                            Keep me signed in
+                                            Lembrar-me
                                         </label>
                                     </div>
-                                    <a href="#" class="auth-link text-black">Forgot password?</a>
-                                </div>
-                                <div class="mb-2">
-                                    <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                                        <i class="mdi mdi-facebook mr-2"></i>Connect using facebook
-                                    </button>
+                                    <a href="#" class="auth-link text-black">Esqueceu a Senha?</a>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                                    Não possui um conta ainda? <a href="${pageContext.request.contextPath}/allowed/register" class="text-primary">Criar</a>
                                 </div>
                             </form>
                         </div>

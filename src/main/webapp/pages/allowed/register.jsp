@@ -32,11 +32,11 @@
 
 
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" id="telefone" name="telefone" placeholder="Telefone*" required>
+                                <input type="text" class="form-control form-control-lg phone_with_ddd" id="telefone" name="telefone" placeholder="Telefone*" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" id="cep" name="cep" placeholder="Cep*" required>
+                                <input type="text" class="form-control form-control-lg cep" id="cep" name="cep" placeholder="Cep*" required>
                             </div>
 
                             <div class="form-group">
@@ -64,7 +64,7 @@
                                 <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Enviar</button>
                             </div>
                             <div class="text-center mt-4 font-weight-light">
-                                Já está cadastrado? <a href="login.html" class="text-primary">Login</a>
+                                Já está cadastrado? <a href="${pageContext.request.contextPath}/allowed/login" class="text-primary">Login</a>
                             </div>
                         </form>
                     </div>

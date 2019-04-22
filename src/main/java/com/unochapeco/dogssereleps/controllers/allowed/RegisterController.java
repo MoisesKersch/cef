@@ -48,4 +48,9 @@ public class RegisterController {
     public ResponseEntity<?> findByCidadeNomeAndUf(String cidadeNome, String uf) {
         return ResponseEntity.ok(enderecoService.findByCidadeNomeAndUf(cidadeNome, uf));
     }
+
+    @GetMapping(value = "/isemail")
+    public ResponseEntity<?> findByCidadeNomeAndUf(String email) {
+        return ResponseEntity.ok(userService.findUserByEmail(email));
+    }
 }

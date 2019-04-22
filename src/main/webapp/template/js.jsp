@@ -17,6 +17,7 @@
 
 <script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/validate/jquery.validate.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/validate/translations/pt-br.js"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/jquerymask/jquery.mask.js"></script>
 
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/string-utils.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/serialize-object.js"></script>

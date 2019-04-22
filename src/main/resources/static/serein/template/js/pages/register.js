@@ -7,7 +7,13 @@ $(document).ready(function () {
     validate()
     typeHead()
     onChangeCepField()
+    mask()
 });
+
+function mask() {
+    $('.phone_with_ddd').mask('(00) 0000-00000');
+    $('.cep').mask('00000-000');
+}
 
 function save() {
     var data = JSON.stringify($(formId).serializeObject());
@@ -25,7 +31,7 @@ function typeHead() {
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            url: contextPath + '/allowed/findbycidadenome#%QUERY',
+            url: contextPath + 'allowed/findbycidadenome#%QUERY',
             wildcard: '%QUERY',
             transport: function (opts, onSuccess, onError) {
                 var url = opts.url.split("#")[0];
@@ -95,7 +101,6 @@ function saveFireSw(title, text, url, data) {
         return new Promise(resolve => {
             if (obj.value != undefined) {
                 obj = obj.value;
-                updateToken(obj.token)
                 if (!obj.hasError) {
                     successAlert(obj, title, text, resolve, confirmButton, cancelButton)
                 } else {
@@ -106,7 +111,7 @@ function saveFireSw(title, text, url, data) {
 
     }).then(function (r) {
         if (r) {
-            window.location.href = contextPath + "login";
+            window.location.href = contextPath + "allowed/login";
         } else {
             window.location.href = contextPath + "allowed/register";
         }
@@ -139,7 +144,7 @@ function getCepData() {
 function findByCidadeNomeAndUf(addr) {
     $.ajax({
         type: "POST",
-        url :  contextPath + '/allowed/findbycidadenomeanduf',
+        url :  contextPath + 'allowed/findbycidadenomeanduf',
         data: {
             cidadeNome: addr.localidade,
             uf: addr.uf
@@ -170,7 +175,24 @@ function validate() {
         rules: {
             senha2: {
                 equalTo: "#senha"
-            }
+            },
+            email : {
+                required: true,
+                remote : {
+                    url : contextPath + 'allowed/isemail',
+                    type : "GET",
+                    data : {
+                        email : function() {
+                            return $("#email").val()
+                        }
+                    },
+                    dataFilter : function(response) {
+                        if (!response)
+                            return true;
+                        return false;
+                    }
+                }
+            },
         },
         messages: {
             email: {

@@ -23,4 +23,23 @@ public class UserServiceImpl implements  UserService {
         }
         return null;
     }
+
+    @Override
+    public User findUserByEmail(String email) {
+       try {
+            return userRepository.findUserByEmail(email);
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       return new User();
+    }
+
+    @Override
+    public User findUserByEmailAndSenha(String email, String senha) {
+        try {
+            return userRepository.findUserByEmailAndSenha(email, senha);
+        }catch (Exception e) {
+            return null;
+        }
+    }
 }
