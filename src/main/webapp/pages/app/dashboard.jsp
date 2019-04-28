@@ -1,18 +1,20 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <jsp:include page="../../template/head.jsp"></jsp:include>
     <jsp:include page="../../template/css.jsp"></jsp:include>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/serein/template/css/horizontal-layout/style.css">
 </head>
+
 <body>
 <div class="container-scroller">
+    <div class="horizontal-menu">
     <jsp:include page="../../template/header.jsp"></jsp:include>
+    <jsp:include page="../../template/menu.jsp"></jsp:include>
+    </div>
+    <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-        <jsp:include page="../../template/menu.jsp"></jsp:include>
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="row">
@@ -88,35 +90,35 @@
                                     <h6 class="card-title">Activity</h6>
                                 </div>
                                 <div class="list d-flex align-items-center border-bottom pb-3">
-                                    <img class="img-sm rounded-circle" src="${pageContext.request.contextPath}/resources/serein/template/images/faces/face8.jpg" alt="">
+                                    <img class="img-sm rounded-circle" src="../../images/faces/face8.jpg" alt="">
                                     <div class="wrapper w-100 ml-3">
                                         <p><b>Dobrick </b>published an article</p>
                                         <small class="text-muted">2 hours ago</small>
                                     </div>
                                 </div>
                                 <div class="list d-flex align-items-center border-bottom py-3">
-                                    <img class="img-sm rounded-circle" src="${pageContext.request.contextPath}/resources/serein/template/images/faces/face5.jpg" alt="">
+                                    <img class="img-sm rounded-circle" src="../../images/faces/face5.jpg" alt="">
                                     <div class="wrapper w-100 ml-3">
                                         <p><b>Stella </b>created an event</p>
                                         <small class="text-muted">3 hours ago</small>
                                     </div>
                                 </div>
                                 <div class="list d-flex align-items-center border-bottom py-3">
-                                    <img class="img-sm rounded-circle" src="${pageContext.request.contextPath}/resources/serein/template/images/faces/face7.jpg" alt="">
+                                    <img class="img-sm rounded-circle" src="../../images/faces/face7.jpg" alt="">
                                     <div class="wrapper w-100 ml-3">
                                         <p><b>Peter </b>submitted the reports</p>
                                         <small class="text-muted">1 hours ago</small>
                                     </div>
                                 </div>
                                 <div class="list d-flex align-items-center border-bottom py-3">
-                                    <img class="img-sm rounded-circle" src="${pageContext.request.contextPath}/resources/serein/template/images/faces/face6.jpg" alt="">
+                                    <img class="img-sm rounded-circle" src="../../images/faces/face6.jpg" alt="">
                                     <div class="wrapper w-100 ml-3">
                                         <p><b>Nateila </b>updated the docs</p>
                                         <small class="text-muted">1 hours ago</small>
                                     </div>
                                 </div>
                                 <div class="list d-flex align-items-center pt-3">
-                                    <img class="img-sm rounded-circle" src="${pageContext.request.contextPath}/resources/serein/template/images/faces/face9.jpg" alt="">
+                                    <img class="img-sm rounded-circle" src="../../images/faces/face9.jpg" alt="">
                                     <div class="wrapper w-100 ml-3">
                                         <p><b>Tom </b>uploaded the demo</p>
                                         <small class="text-muted">3 hours ago</small>
@@ -249,7 +251,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="wrapper d-flex align-items-center justify-content-start justify-content-sm-center flex-wrap">
-                                    <img class="img-md rounded" src="${pageContext.request.contextPath}/resources/serein/template/images/faces/face1.jpg" alt="">
+                                    <img class="img-md rounded" src="../../images/faces/face1.jpg" alt="">
                                     <div class="wrapper ml-4">
                                         <p class="font-weight-medium">Tim Cook</p>
                                         <p class="text-muted">timcook@gmail.com</p>
@@ -263,7 +265,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="wrapper d-flex align-items-center justify-content-start justify-content-sm-center flex-wrap">
-                                    <img class="img-md rounded" src="${pageContext.request.contextPath}/resources/serein/template/images/faces/face2.jpg" alt="">
+                                    <img class="img-md rounded" src="../../images/faces/face2.jpg" alt="">
                                     <div class="wrapper ml-4">
                                         <p class="font-weight-medium">Sarah Graves</p>
                                         <p class="text-muted">Sarah@gmail.com</p>
@@ -277,7 +279,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="wrapper d-flex align-items-center justify-content-start justify-content-sm-center flex-wrap">
-                                    <img class="img-md rounded" src="${pageContext.request.contextPath}/resources/serein/template/images/faces/face3.jpg" alt="">
+                                    <img class="img-md rounded" src="../../images/faces/face3.jpg" alt="">
                                     <div class="wrapper ml-4">
                                         <p class="font-weight-medium">David Grey</p>
                                         <p class="text-muted">David@gmail.com</p>
@@ -289,15 +291,16 @@
                     </div>
                 </div>
             </div>
-            <footer class="footer">
-                <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-                </div>
-            </footer>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <jsp:include page="../../template/footer.jsp"></jsp:include>
+            <!-- partial -->
         </div>
+        <!-- main-panel ends -->
     </div>
+    <!-- page-body-wrapper ends -->
 </div>
 <jsp:include page="../../template/js.jsp"></jsp:include>
 </body>
+
 </html>

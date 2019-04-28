@@ -53,4 +53,6 @@ public class RegisterController {
     public ResponseEntity<?> findByCidadeNomeAndUf(String email) {
         return ResponseEntity.ok(userService.findUserByEmail(email));
     }
+
+
 }

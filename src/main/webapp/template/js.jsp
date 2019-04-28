@@ -15,11 +15,13 @@
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/settings.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/todolist.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/validate/jquery.validate.js"></script>
-<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/validate/translations/pt-br.js"></script>
-<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/jquerymask/jquery.mask.js"></script>
 
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/string-utils.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/serialize-object.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/sweetalert2@8.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/swal-helpers.js"></script>
+
+
+<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/validate/jquery.validate.js"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/validate/translations/pt-br.js"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/jquerymask/jquery.mask.js"></script>

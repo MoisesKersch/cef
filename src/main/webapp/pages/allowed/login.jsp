@@ -44,7 +44,7 @@
                                             Lembrar-me
                                         </label>
                                     </div>
-                                    <a href="#" class="auth-link text-black">Esqueceu a Senha?</a>
+<%--                                    <a href="#" class="auth-link text-black">Esqueceu a Senha?</a>--%>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
                                     Não possui um conta ainda? <a href="${pageContext.request.contextPath}/allowed/register" class="text-primary">Criar</a>

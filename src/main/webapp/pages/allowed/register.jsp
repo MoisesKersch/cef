@@ -8,6 +8,7 @@
 <head>
     <jsp:include page="../../template/head.jsp"></jsp:include>
     <jsp:include page="../../template/css.jsp"></jsp:include>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/serein/template/css/vertical-layout-light/style.css">
 </head>
 
 <body>
@@ -44,6 +45,10 @@
                             </div>
 
                             <input type="hidden" id="cidadeId">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" id="endereco" name="endereco" placeholder="Endereço" required>
+                            </div>
 
                             <div class="form-group">
                                 <input type="password" class="form-control form-control-lg" id="senha" name="senha" placeholder="Senha*" required>

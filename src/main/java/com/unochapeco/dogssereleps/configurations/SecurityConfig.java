@@ -36,13 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/des/dashboard", true).passwordParameter("senha").usernameParameter("email")
+                .failureUrl("/allowed/login?error")
+                .defaultSuccessUrl("/app/dashboard", true).passwordParameter("senha").usernameParameter("email")
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/allowed/login")
                 .and()
                 .exceptionHandling()
-                .accessDeniedPage("/login");
+                .accessDeniedPage("/allowed/login");
 
         http.csrf().disable();
     }

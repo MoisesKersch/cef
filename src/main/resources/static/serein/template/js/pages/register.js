@@ -10,6 +10,7 @@ $(document).ready(function () {
     mask()
 });
 
+
 function mask() {
     $('.phone_with_ddd').mask('(00) 0000-00000');
     $('.cep').mask('00000-000');
@@ -96,7 +97,6 @@ function saveFireSw(title, text, url, data) {
                     return false;
                 })
         }
-
     }).then(function (obj) {
         return new Promise(resolve => {
             if (obj.value != undefined) {
@@ -111,11 +111,28 @@ function saveFireSw(title, text, url, data) {
 
     }).then(function (r) {
         if (r) {
-            window.location.href = contextPath + "allowed/login";
+            login()
+            debugger
+            console.log(contextPath + "app/dashboard")
+            window.location.href = contextPath + "app/dashboard";
         } else {
             window.location.href = contextPath + "allowed/register";
         }
     })
+}
+
+function login() {
+    $.ajax({
+        url: contextPath + "allowed/manuallogin",
+        type: "post",
+        data: {
+            email: $("#email").val(),
+            senha: $("#senha").val()
+        },
+        success: () => {
+
+        }
+    });
 }
 
 function getCepData() {
@@ -127,6 +144,7 @@ function getCepData() {
                 url : "https://viacep.com.br/ws/" +cep+ "/json/",
                 success : function(addr) {
                     findByCidadeNomeAndUf(addr)
+                    $("#endereco").val(addr.logradouro)
                 },
                 error: function (request, status, error) {
                     console.log(request)
