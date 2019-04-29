@@ -8,8 +8,19 @@ $(document).ready(function () {
     typeHead()
     onChangeCepField()
     mask()
+    getLocation();
 });
 
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        setLocation(position.coords.latitude, position.coords.longitude);
+    });
+}
+
+function setLocation(lat, long) {
+    $("#latitude").val(lat);
+    $("#longitude").val(long);
+}
 
 function mask() {
     $('.phone_with_ddd').mask('(00) 0000-00000');

@@ -3,7 +3,6 @@
     var tableId = '#${tableId}'
     var formId = '#${formId}'
     var mi = '#${mi}'
-    var role = '${user.role}'
 </script>
 
 <script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/vendor.bundle.base.js"></script>

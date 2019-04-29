@@ -29,7 +29,7 @@ public class Animal {
     private String raca;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private User user;
 }

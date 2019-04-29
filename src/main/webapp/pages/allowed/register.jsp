@@ -24,13 +24,15 @@
                         <h4>Novo por aqui?</h4>
                         <h6 class="font-weight-light">Cadastre-se, é muito simples e rápido.</h6>
                         <form class="pt-3" id="${formId}">
+                            <input type="hidden" id="latitude" name="latitude">
+                            <input type="hidden" id="longitude" name="longitude">
+
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-lg" id="nome" name="nome" placeholder="Nome*" required>
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Email*" required>
                             </div>
-
 
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-lg phone_with_ddd" id="telefone" name="telefone" placeholder="Telefone*" required>

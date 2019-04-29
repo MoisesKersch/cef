@@ -13,7 +13,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="pages/widgets/widgets.html">
+                <a class="nav-link" href="${pageContext.request.contextPath}/app/servico">
                     <i class="mdi mdi-airplay menu-icon"></i>
                     <span class="menu-title">Agendar Serviço</span>
                 </a>
@@ -26,15 +26,15 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="pages/widgets/widgets.html">
-                    <i class="mdi mdi-airplay menu-icon"></i>
-                    <span class="menu-title">Relatorio de Serviços</span>
-                </a>
-            </li>
+<%--            <li class="nav-item">--%>
+<%--                <a class="nav-link" href="${pageContext.request.contextPath}/app/servico/list">--%>
+<%--                    <i class="mdi mdi-airplay menu-icon"></i>--%>
+<%--                    <span class="menu-title">Relatorio de Serviços</span>--%>
+<%--                </a>--%>
+<%--            </li>--%>
 
             <li class="nav-item">
-                <a class="nav-link" href="pages/widgets/widgets.html">
+                <a class="nav-link" href="#">
                     <i class="mdi mdi-airplay menu-icon"></i>
                     <span class="menu-title">Conta</span>
                 </a>
