@@ -9,6 +9,8 @@ import com.unochapeco.dogssereleps.utils.DistanceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -57,10 +59,17 @@ public class ServicoServiceImpl implements ServicoService {
             for (Servico s : servico) {
                 s.setDistancia(DistanceUtil.distance(lat, lon, s.getUser().getLatitude(), s.getUser().getLongitude(), 'K'));
             }
+            Collections.sort(servico, new SortbyDistancia());
             return servico;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    class SortbyDistancia implements Comparator<Servico> {
+        public int compare(Servico a, Servico b) {
+            return Double.compare(a.getDistancia(), b.getDistancia());
+        }
     }
 }
