@@ -11,6 +11,7 @@
     <jsp:include page="../../../template/css.jsp"></jsp:include>
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/serein/template/css/horizontal-layout/style.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css">
 </head>
 
 <body>
@@ -33,7 +34,6 @@
                                         em relação ao local que você cadastrou o seu perfil no sistema. Ao contratar um
                                         serviço o cliente que solicitou será notificado, e seu contato será enviado para
                                         o mesmo para dar continuidade.</p>
-
                                     <div class="row pricing-table">
                                         <c:forEach items="${servicos}" var="servico">
                                             <div class="col-md-4 grid-margin stretch-card pricing-card">
@@ -81,6 +81,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

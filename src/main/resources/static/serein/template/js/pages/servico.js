@@ -11,8 +11,32 @@ $(document).ready(function () {
     datePicker();
     timePicker();
     startSelect2()
+    initializeMap()
 });
 
+function initializeMap() {
+    var map = L.map("map").setView([lat, lon], 12);
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+
+    var markerGroup = L.layerGroup().addTo(map);
+    map.on("click", function (event) {
+        markerGroup.clearLayers()
+        console.log(event.latlng)
+        L.marker(event.latlng).addTo(markerGroup);
+    });
+
+
+
+
+    // L.marker().addTo(layerGroup);
+    //
+    // layerGroup.clearLayers();
+
+}
 function startSelect2() {
     $('.tipo-servico').select2();
 }
@@ -33,6 +57,7 @@ function wizzard() {
         transitionEffect: "slideLeft",
         onStepChanging: function(e, t, i) {
             setFinalForm()
+            window.dispatchEvent(new Event('resize'));
             return (form.validate().settings.ignore = ":disabled,:hidden", form.valid());
         },
         onFinished: function (event, currentIndex) {

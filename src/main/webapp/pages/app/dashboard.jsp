@@ -301,6 +301,7 @@
     <!-- page-body-wrapper ends -->
 </div>
 <jsp:include page="../../template/js.jsp"></jsp:include>
+<script src="${pageContext.request.contextPath}/resources/serein/template/js/pages/${js}"></script>
 </body>
 
 </html>

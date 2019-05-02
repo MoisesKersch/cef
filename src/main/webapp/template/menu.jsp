@@ -11,7 +11,7 @@
                     <span class="menu-title">Dashboard</span>
                 </a>
             </li>
-
+            
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/app/servico">
                     <i class="mdi mdi-airplay menu-icon"></i>
@@ -27,9 +27,9 @@
             </li>
 
 <%--            <li class="nav-item">--%>
-<%--                <a class="nav-link" href="${pageContext.request.contextPath}/app/servico/list">--%>
+<%--                <a class="nav-link" href="${pageContext.request.contextPath}/app/prestarservico">--%>
 <%--                    <i class="mdi mdi-airplay menu-icon"></i>--%>
-<%--                    <span class="menu-title">Relatorio de Serviços</span>--%>
+<%--                    <span class="menu-title">Prestar Serviço</span>--%>
 <%--                </a>--%>
 <%--            </li>--%>
 

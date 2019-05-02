@@ -1,5 +1,4 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
@@ -13,6 +12,18 @@
     <jsp:include page="../../../template/css.jsp"></jsp:include>
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/serein/template/css/horizontal-layout/style.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css">
+    <style>
+        #map {
+            height: 250px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        let lat = ${usuario.latitude};
+        let lon = ${usuario.longitude};
+    </script>
 </head>
 
 <body>
@@ -21,7 +32,6 @@
         <jsp:include page="../../../template/header.jsp"></jsp:include>
         <jsp:include page="../../../template/menu.jsp"></jsp:include>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-
     </div>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
@@ -40,7 +50,6 @@
                                             <h3>Tipo do Serviço</h3>
                                             <div class="form-group">
                                                 <label>Escolha um Serviço</label>
-
                                                 <select class="tipo-servico" style="width:100%"
                                                         name="tipoServico">
                                                     <c:forEach items="${tipoServicos}" var="tipoServico">
@@ -48,7 +57,6 @@
                                                     </c:forEach>
                                                 </select>
                                             </div>
-
 
                                             <div class="form-group">
                                             <label>Deseja atribuir para qual pet?</label>
@@ -64,6 +72,7 @@
                                         <h3>Local</h3>
                                         <section>
                                             <h3>Local do Serviço</h3>
+
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Escolha aonde você quer que o
                                                     serviço seja feito</label>
@@ -87,7 +96,15 @@
                                                         </label>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-sm-12">
+
+                                                    <label>Selecione um Lugar no Mapa</label>
+                                                            <br>
+                                                            <div id="map"></div>
+                                                </div>
                                             </div>
+
                                         </section>
                                         <h3>Data/Hora</h3>
                                         <section>
@@ -137,7 +154,7 @@
 <jsp:include page="../../../template/js.jsp"></jsp:include>
 <script src="http://www.urbanui.com/serein/template/js/select2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-
+<script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/pages/${js}"></script>
 
 </body>

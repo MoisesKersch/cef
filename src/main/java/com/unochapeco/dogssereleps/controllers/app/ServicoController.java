@@ -41,6 +41,7 @@ public class ServicoController implements Serializable {
         pageUtil.setFormId("servico-form");
         pageUtil.setAttr("tipoServicos", this.tipoServicoRepository.findAll());
         pageUtil.setAttr("animais", this.animalService.findByUser(this.userService.getCurrentUser()));
+        pageUtil.setAttr("usuario", this.userService.getCurrentUser());
         return pageUtil.getModel();
     }
 

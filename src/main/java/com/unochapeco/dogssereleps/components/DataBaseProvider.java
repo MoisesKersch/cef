@@ -23,6 +23,7 @@ public class DataBaseProvider implements AuthenticationProvider {
         try {
             String email = authentication.getName().trim();
             String senha = authentication.getCredentials().toString().trim();
+
             Optional<User> op = null;
             op = Optional.of(userService.findUserByEmailAndSenha(email, senha));
 
