@@ -47,7 +47,7 @@
                                                     <ul class="list-unstyled plan-features">
                                                         <li>Nome: <strong>${servico.tipoServico.nome}</strong></li>
                                                         <li>Nome do Cliente: <strong>${servico.user.nome}</strong></li>
-                                                        <li>Tipo do Pet: <strong>${servico.animal.tipo}</strong></li>
+                                                        <li>Tipo do Pet: <strong>${servico.animal.tipoPet.nome}</strong></li>
                                                         <li>Distância: <strong>
                                                             <fmt:formatNumber type="number"
 

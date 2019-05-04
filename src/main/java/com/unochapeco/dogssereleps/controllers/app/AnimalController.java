@@ -2,6 +2,7 @@ package com.unochapeco.dogssereleps.controllers.app;
 
 import com.unochapeco.dogssereleps.models.Animal;
 import com.unochapeco.dogssereleps.models.User;
+import com.unochapeco.dogssereleps.repositories.TipoPetRepository;
 import com.unochapeco.dogssereleps.services.AnimalService;
 import com.unochapeco.dogssereleps.services.EnderecoService;
 import com.unochapeco.dogssereleps.services.UserService;
@@ -27,10 +28,15 @@ public class AnimalController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private TipoPetRepository tipoPetRepository;
+
     @GetMapping
     public ModelAndView register(HttpServletRequest request) {
         PageUtil pageUtil = new PageUtil(request.getServletPath() + "/animal");
         pageUtil.setJs("animal.js");
+        pageUtil.setAttr("tipoPets", this.tipoPetRepository.findAll() );
+
         pageUtil.setFormId("animal-form");
         return pageUtil.getModel();
     }
@@ -38,6 +44,9 @@ public class AnimalController {
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Animal animal) {
         animal.setUser(userService.getCurrentUser());
+        this.tipoPetRepository.findById(animal.getTipoPetId()).ifPresent(tipoPet -> {
+            animal.setTipoPet(tipoPet);
+        });
         return ResponseEntity.ok(animalService.save(animal));
     }
 

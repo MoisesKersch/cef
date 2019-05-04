@@ -10,6 +10,14 @@
     <jsp:include page="../../../template/css.jsp"></jsp:include>
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/serein/template/css/horizontal-layout/style.css">
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css">
+    <style>
+        #map {
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
@@ -101,12 +109,8 @@
                                             </ul>
                                         </div>
                                         <div class="profile-feed">
-                                            <div class="d-flex align-items-start profile-feed-item">
-                                                <div class="ml-4">
-                                                    <div id="map"></div>
-                                                </div>
-                                            </div>
-
+                                        <div id="map">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +120,22 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
+            <jsp:include page="../../../template/footer.jsp"></jsp:include>
         <jsp:include page="../../../template/js.jsp"></jsp:include>
+            <script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
+            <script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/usuario.js"></script>
+            <script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/address.js"></script>
+            <script>
+                let usuario = new Usuario();
+                usuario.nome = "${usuario.nome}";
+                usuario.email = "${usuario.email}";
+                usuario.cep = "${usuario.cep}";
+                usuario.cidade = "${usuario.cidade}";
+                usuario.telefone = "${usuario.telefone}";
+                usuario.rua = "${usuario.rua}";
+                usuario.latitude = "${usuario.latitude}";
+                usuario.longitude = "${usuario.longitude}";
+            </script>
         <script src="${pageContext.request.contextPath}/resources/serein/template/js/pages/${js}"></script>
 </body>
 

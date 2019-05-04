@@ -57,13 +57,20 @@ function getAddressBasedOnCoordinates(latitude, longitude) {
 }
 
 function initializeMap() {
-    var map = L.map("map").setView([lat, lon], 12);
+    var map = L.map("map").setView([lat, lon], 14);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        attribution: 'Copyright © 2019 Fernando Moises And Master Taylor. Todos os Direitos Reservados.'
     }).addTo(map);
 
     var markerGroup = L.layerGroup().addTo(map);
+
+    var latlng = {
+        lat: lat,
+        lng: lon
+    };
+    L.marker(latlng).addTo(markerGroup);
+
     map.on("click", function (event) {
         markerGroup.clearLayers()
         lat = event.latlng.lat;

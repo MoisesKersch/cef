@@ -8,11 +8,16 @@ const postSaveText  =  'Registro Salvo Com sucesso';
 
 $(document).ready(function () {
     validate()
+    startSelect2()
 });
 
 function save() {
     var data = JSON.stringify($(formId).serializeObject());
     var obj = saveFireSw('<h1>Tem certeza que deseja continuar?</h1>', '', saveUrl, data);
+}
+
+function startSelect2() {
+    $('.tipo-pet').select2();
 }
 
 function saveFireSw(title, text, url, data) {

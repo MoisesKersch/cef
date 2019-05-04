@@ -1,8 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,20 +49,23 @@
                                                 <select class="tipo-servico" style="width:100%"
                                                         name="tipoServico">
                                                     <c:forEach items="${tipoServicos}" var="tipoServico">
-                                                        <option value="${tipoServico.id}">${tipoServico.nome} R$ <fmt:formatNumber pattern="#,###,###.00" value="${tipoServico.valor}" type="currency"/></option>
+                                                        <option value="${tipoServico.id}">${tipoServico.nome} R$
+                                                            <fmt:formatNumber pattern="#,###,###.00"
+                                                                              value="${tipoServico.valor}"
+                                                                              type="currency"/></option>
                                                     </c:forEach>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
-                                            <label>Deseja atribuir para qual pet?</label>
-                                            <select class="animal" style="width:100%"
-                                                    name="animal">
-                                                <c:forEach items="${animais}" var="animal">
-                                                    <option value="${animal.id}">${animal.nome}</option>
-                                                </c:forEach>
-                                            </select>
-                                    </div>
+                                                <label>Deseja atribuir para qual pet?</label>
+                                                <select class="animal" style="width:100%"
+                                                        name="animal">
+                                                    <c:forEach items="${animais}" var="animal">
+                                                        <option value="${animal.id}">${animal.nome}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
                                         </section>
                                         <h3>Local</h3>
                                         <section>
@@ -98,8 +101,8 @@
                                                 <div class="col-sm-12">
                                                     <br>
                                                     <label>Ajustar o Endereço</label>
-                                                            <br>
-                                                            <div id="map"></div>
+                                                    <br>
+                                                    <div id="map"></div>
                                                 </div>
                                             </div>
 
@@ -153,28 +156,11 @@
                                                         </div>
                                                     </div>
 
-<%--                                            <h3>Escolhas</h3>--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label>Tipo do Serviço</label>--%>
-<%--                                                <input type="text" class="form-control" id="tipo-servico-form">--%>
-<%--                                            </div>--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label>Local</label>--%>
-<%--                                                <input type="text" class="form-control" id="local-form">--%>
-<%--                                            </div>--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label>Data/Hora</label>--%>
-<%--                                                <input type="text" class="form-control" id="data-hora-form">--%>
-<%--                                            </div>--%>
-
-<%--                                            <div class="form-group">--%>
-<%--                                                <label>Endereço</label>--%>
-<%--                                                <input type="text" class="form-control"  id="endereco-form">--%>
-<%--                                            </div>--%>
-
-                                            <input type="hidden" class="form-control" name="data" id="data">
-                                            <input type="hidden" class="form-control" name="latitude" id="latitude">
-                                            <input type="hidden" class="form-control" name="longitude" id="longitude">
+                                                    <input type="hidden" class="form-control" name="data" id="data">
+                                                    <input type="hidden" class="form-control" name="latitude"
+                                                           id="latitude">
+                                                    <input type="hidden" class="form-control" name="longitude"
+                                                           id="longitude">
                                         </section>
                                     </div>
                                 </form>

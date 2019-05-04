@@ -89,7 +89,10 @@ function getColumns() {
         data: "nome"
     }, {
         title: "Tipo",
-        data: "tipo"
+        data: "tipoPet",
+        render: ( data, type, row ) => {
+            return data.nome;
+        }
     }, {
         title: "Raça",
         data: "raca"

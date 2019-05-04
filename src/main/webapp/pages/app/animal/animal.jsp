@@ -33,8 +33,14 @@
                                             <input id="nome" class="form-control" name="nome"  type="text" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="tipo">Tipo*</label>
-                                            <input id="tipo" class="form-control" type="text" name="tipo" required>
+                                            <label>Tipo*</label>
+                                            <select class="tipo-pet" style="width:100%" required
+                                                    name="tipoPetId">
+                                                <c:forEach items="${tipoPets}" var="tipoPet">
+                                                    <option value="${tipoPet.id}">${tipoPet.nome}
+                                                    </option>
+                                                </c:forEach>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="raca">Raça</label>
