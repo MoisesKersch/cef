@@ -40,6 +40,9 @@ public class User {
     @Column(name = "telefone", length = 20)
     private String telefone;
 
+    @Column(name = "rua", length = 20)
+    private String rua;
+
     @NotNull
     @Column(name = "senha", length = 20)
     private String senha;

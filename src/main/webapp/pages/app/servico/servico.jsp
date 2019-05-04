@@ -15,15 +15,11 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css">
     <style>
         #map {
-            height: 250px;
+            height: 200px;
             border: 1px solid black;
         }
     </style>
 
-    <script>
-        let lat = ${usuario.latitude};
-        let lon = ${usuario.longitude};
-    </script>
 </head>
 
 <body>
@@ -60,8 +56,7 @@
 
                                             <div class="form-group">
                                             <label>Deseja atribuir para qual pet?</label>
-
-                                            <select class="tipo-servico" style="width:100%"
+                                            <select class="animal" style="width:100%"
                                                     name="animal">
                                                 <c:forEach items="${animais}" var="animal">
                                                     <option value="${animal.id}">${animal.nome}</option>
@@ -72,7 +67,6 @@
                                         <h3>Local</h3>
                                         <section>
                                             <h3>Local do Serviço</h3>
-
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Escolha aonde você quer que o
                                                     serviço seja feito</label>
@@ -98,8 +92,12 @@
                                                 </div>
 
                                                 <div class="col-sm-12">
+                                                    <label>Endereço: <span id="endereco"></span></label>
+                                                </div>
 
-                                                    <label>Selecione um Lugar no Mapa</label>
+                                                <div class="col-sm-12">
+                                                    <br>
+                                                    <label>Ajustar o Endereço</label>
                                                             <br>
                                                             <div id="map"></div>
                                                 </div>
@@ -122,20 +120,61 @@
                                         </section>
                                         <h3>Finalizar</h3>
                                         <section>
-                                            <h3>Escolhas</h3>
-                                            <div class="form-group">
-                                                <label>Tipo do Serviço</label>
-                                                <input type="text" class="form-control" id="tipo-servico-form">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Local</label>
-                                                <input type="text" class="form-control" id="local-form">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Data/Hora</label>
-                                                <input type="text" class="form-control" id="data-hora-form">
-                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="card px-2">
+                                                    <div class="card-body">
+                                                        <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+                                                            <div class="table-responsive w-100">
+                                                                <table class="table">
+                                                                    <tbody>
+                                                                    <tr class="text-right">
+                                                                        <td class="text-left">1</td>
+                                                                        <td class="text-left">Serviço</td>
+                                                                        <td id="tipo-servico-form"></td>
+                                                                    </tr>
+                                                                    <tr class="text-right">
+                                                                        <td class="text-left">2</td>
+                                                                        <td class="text-left">Local</td>
+                                                                        <td id="local-form"></td>
+                                                                    </tr>
+                                                                    <tr class="text-right">
+                                                                        <td class="text-left">3</td>
+                                                                        <td class="text-left">Data</td>
+                                                                        <td id="data-hora-form"></td>
+                                                                    </tr>
+                                                                    <tr class="text-right">
+                                                                        <td class="text-left">4</td>
+                                                                        <td class="text-left">Endereço</td>
+                                                                        <td id="endereco-form">1</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+<%--                                            <h3>Escolhas</h3>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label>Tipo do Serviço</label>--%>
+<%--                                                <input type="text" class="form-control" id="tipo-servico-form">--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label>Local</label>--%>
+<%--                                                <input type="text" class="form-control" id="local-form">--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label>Data/Hora</label>--%>
+<%--                                                <input type="text" class="form-control" id="data-hora-form">--%>
+<%--                                            </div>--%>
+
+<%--                                            <div class="form-group">--%>
+<%--                                                <label>Endereço</label>--%>
+<%--                                                <input type="text" class="form-control"  id="endereco-form">--%>
+<%--                                            </div>--%>
+
                                             <input type="hidden" class="form-control" name="data" id="data">
+                                            <input type="hidden" class="form-control" name="latitude" id="latitude">
+                                            <input type="hidden" class="form-control" name="longitude" id="longitude">
                                         </section>
                                     </div>
                                 </form>
@@ -155,6 +194,21 @@
 <script src="http://www.urbanui.com/serein/template/js/select2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/usuario.js"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/address.js"></script>
+
+<script>
+    let usuario = new Usuario();
+    usuario.nome = "${usuario.nome}";
+    usuario.email = "${usuario.email}";
+    usuario.cep = "${usuario.cep}";
+    usuario.cidade = "${usuario.cidade}";
+    usuario.telefone = "${usuario.telefone}";
+    usuario.rua = "${usuario.rua}";
+    usuario.latitude = "${usuario.latitude}";
+    usuario.longitude = "${usuario.longitude}";
+</script>
+
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/pages/${js}"></script>
 
 </body>

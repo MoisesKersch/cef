@@ -2,24 +2,62 @@ const saveUrl = contextPath + 'allowed/save';
 const errorMessage = 'Ocorreu um erro ao tentar salvar o registro.';
 const confirmButton = 'Entrar no Sistema';
 const cancelButton = 'Cadastrar Outro Usuário';
+var address = new Address();
 
 $(document).ready(function () {
     validate()
     typeHead()
     onChangeCepField()
     mask()
-    getLocation();
+    setLocation();
 });
 
 function getLocation() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        setLocation(position.coords.latitude, position.coords.longitude);
+    return new Promise(function(resolve, reject) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            resolve(position);
+        });
     });
 }
 
-function setLocation(lat, long) {
-    $("#latitude").val(lat);
-    $("#longitude").val(long);
+async function setLocation() {
+    let position = await getLocation();
+    $("#latitude").val(position.coords.latitude);
+    $("#longitude").val(position.coords.longitude);
+    let address  = await getAddressBasedOnCoordinates(position.coords.latitude, position.coords.longitude);
+    console.log(address)
+}
+
+function getAddressBasedOnCoordinates(latitude, longitude) {
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            type : "GET",
+            url : `https://geocode.xyz/${latitude},${longitude}?geoit=json`,
+            contentType: 'application/json',
+            dataType:'jsonp',
+            responseType:'application/json',
+            xhrFields: {
+                withCredentials: false
+            },
+            headers: {
+                'Access-Control-Allow-Credentials' : true,
+                'Access-Control-Allow-Origin':'*',
+                'Access-Control-Allow-Methods':'GET',
+                'Access-Control-Allow-Headers':'application/json',
+            },
+            success : function(obj) {
+                $('#cep').val(obj.postal);
+                $('#rua').val(obj.staddress);
+                address.localidade = obj.city;
+                address.uf = obj.state;
+                findByCidadeNomeAndUf(address)
+                resolve(obj);
+            },
+            error: function (request, status, error) {
+                resolve(obj);
+            }
+        })
+    });
 }
 
 function mask() {
@@ -123,7 +161,6 @@ function saveFireSw(title, text, url, data) {
     }).then(function (r) {
         if (r) {
             login()
-            debugger
             console.log(contextPath + "app/dashboard")
             window.location.href = contextPath + "app/dashboard";
         } else {
@@ -155,7 +192,7 @@ function getCepData() {
                 url : "https://viacep.com.br/ws/" +cep+ "/json/",
                 success : function(addr) {
                     findByCidadeNomeAndUf(addr)
-                    $("#endereco").val(addr.logradouro)
+                    $("#rua").val(addr.logradouro)
                 },
                 error: function (request, status, error) {
                     console.log(request)

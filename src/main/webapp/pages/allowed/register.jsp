@@ -49,7 +49,7 @@
                             <input type="hidden" id="cidadeId">
 
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" id="endereco" name="endereco" placeholder="Endereço" required>
+                                <input type="text" class="form-control form-control-lg" id="rua" name="rua" placeholder="Rua" required>
                             </div>
 
                             <div class="form-group">
@@ -86,6 +86,7 @@
 <script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/typehead/typeahead.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/typehead/bloodhound.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/vendors/js/typehead/handlebars.js"></script>
+<script src="${pageContext.request.contextPath}/resources/serein/template/js/helpers/address.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/pages/${js}"></script>
 </body>
 

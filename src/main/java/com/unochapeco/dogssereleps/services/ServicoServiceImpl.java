@@ -57,7 +57,11 @@ public class ServicoServiceImpl implements ServicoService {
             List<Servico> servico = this.servicoRepository.findByStatusAndUserNot("NOVO", user);
 
             for (Servico s : servico) {
-                s.setDistancia(DistanceUtil.distance(lat, lon, s.getUser().getLatitude(), s.getUser().getLongitude(), 'K'));
+                if ( s.getLatitude() != null )
+                    s.setDistancia(DistanceUtil.distance(lat, lon, s.getLatitude(), s.getLongitude(), 'K'));
+                else {
+                    s.setDistancia(0);
+                }
             }
             Collections.sort(servico, new SortbyDistancia());
             return servico;

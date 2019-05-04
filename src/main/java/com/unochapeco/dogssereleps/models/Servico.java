@@ -43,6 +43,12 @@ public class Servico implements Serializable  {
     @JoinColumn
     private User user;
 
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn

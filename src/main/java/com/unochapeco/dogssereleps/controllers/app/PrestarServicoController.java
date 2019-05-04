@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping(value = "app/prestarservico")
+@RequestMapping(value = "app/prestar")
 public class PrestarServicoController {
 
     @Autowired
@@ -27,8 +27,8 @@ public class PrestarServicoController {
 
     @GetMapping
     public ModelAndView register(HttpServletRequest request) {
-        PageUtil pageUtil = new PageUtil(request.getServletPath() + "/prestarservico");
-        pageUtil.setJs("prestarservico.js");
+        PageUtil pageUtil = new PageUtil(request.getServletPath() + "/prestar");
+        pageUtil.setJs("prestar.js");
 
         pageUtil.setAttr("servicos", this.servicoService.findByStatusNovo(this.userService.getCurrentUser()));
 

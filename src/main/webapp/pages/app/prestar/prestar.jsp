@@ -58,7 +58,7 @@
                                                         <li>Localização:
                                                             <button type="button"
                                                                     class="btn btn-success btn-rounded btn-icon"
-                                                                    onclick="window.open('http://www.google.com/maps/place/${servico.user.latitude},${servico.user.longitude}', '_blank')"
+                                                                    onclick="window.open('http://www.google.com/maps/place/${servico.latitude},${servico.longitude}', '_blank')"
                                                                     data-toggle="tooltip" data-placement="bottom"
                                                                     title="Abrir no Google Maps">
                                                                 <i class="mdi mdi-map-marker"></i>

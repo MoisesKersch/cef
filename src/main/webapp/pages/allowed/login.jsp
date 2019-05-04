@@ -27,7 +27,7 @@
                             </div>
                             <h4>Olá! Seja bem vindo ao Dog's and Serelep's</h4>
                             <h6 class="font-weight-light">Faça seu login para continuar.</h6>
-                            <form class="pt-3" action="${pageContext.request.contextPath}/login" method="post" id="${formId}">
+                            <form class="pt-3" action="${pageContext.request.contextPath}/allowed/login" method="post" id="${formId}">
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" name="email" placeholder="Email">
                                 </div>
