@@ -67,7 +67,7 @@ public class EmprestimoServiceImpl implements EmprestimoService {
 
     private BigDecimal adicionarCincoporcentoNoValor(BigDecimal input) {
         try {
-            return input.multiply(new BigDecimal("5")).divide(new BigDecimal("100"));
+            return input.multiply(new BigDecimal("5")).divide(new BigDecimal("100")).add(input);
         }catch (Exception e) {
             return null;
         }
