@@ -29,7 +29,36 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Funcionários</h4>
+                                <h4 class="card-title">Empréstimos</h4>
+
+                                <form class="form-inline repeater" id="${formId}">
+                                    <div data-repeater-list="group-a">
+                                        <div data-repeater-item class="d-flex mb-2">
+                                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                                <div class="">
+                                                    <span class="input-group-text" style="background-color: white; border: none;">Data de Vencimento:</span>
+                                                </div>
+                                            </div>
+                                            <label class="sr-only" for="data-inicial">Users</label>
+                                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar-range menu-icon"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control form-control-sm" id="data-inicial" name="dataInicial" placeholder="Data Inicial">
+                                            </div>
+                                            <label class="sr-only" for="data-final">Users</label>
+                                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar-range menu-icon"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control form-control-sm" name="dataFinal" id="data-final" placeholder="Até">
+                                            </div>
+
+                                            <button type="button" class="btn btn-success btn-sm" id="pesquisar">Pesquisar</button>
+                                        </div>
+                                    </div>
+
+                                </form>
 
                                 <div class="row">
                                     <div class="col-12">
@@ -58,8 +87,6 @@
     <!-- page-body-wrapper ends -->
 </div>
 <jsp:include page="../../../template/js.jsp"></jsp:include>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/serein/template/js/pages/${js}"></script>
 </body>
 

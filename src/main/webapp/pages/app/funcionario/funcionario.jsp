@@ -1,5 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -26,44 +29,43 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Cadastro de Funcionários</h4>
-                                <form class="cmxform" id="${formId}">
+                                <form:form  modelAttribute="obj" class="cmxform" id="${formId}" >
+                                    <form:hidden path="id" id="id" />
                                     <fieldset>
                                         <div class="form-group">
                                             <label for="nome">Nome*</label>
-                                            <input id="nome" class="form-control" name="nome"  type="text" required placeholder="Nome do Funcionário">
+                                            <form:input path="nome" id="nome" class="form-control required" name="nome"  type="text" placeholder="Nome do Funcionário"/>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="cpf">CPF*</label>
-                                            <input id="cpf" class="form-control cpf" name="cpf"  type="text" placeholder="CPF do Funcionário">
+                                            <form:input path="cpf" class="form-control cpf required" name="cpf"  type="text" placeholder="CPF do Funcionário"/>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="Setor">Setor*</label>
-                                            <input id="setor" class="form-control" name="setor"  type="text" required placeholder="Setor do Funcionário">
+                                            <form:input path="setor" id="setor" class="form-control required" name="setor"  type="text"  placeholder="Setor do Funcionário"/>
                                         </div>
 
                                         <div class="form-group ">
                                             <label for="cargo">Cargo*</label>
-                                            <input id="cargo" class="form-control" name="cargo"  type="text" required placeholder="Cargo do Funcionário">
+                                            <form:input path="cargo" id="cargo" class="form-control required" name="cargo"  type="text"  placeholder="Cargo do Funcionário"/>
                                         </div>
-
 
                                         <div class="form-group ">
                                             <label for="data-admissao">Data de Admisão*</label>
-                                                <input type="text" class="form-control" id="data-admissao" placeholder="Data de Admisão do Funcionário"  name="dataAdmissao" class="input-group date datepicker" required >
+                                            <form:input path="dataAdmissao" type="text" id="data-admissao" placeholder="Data de Admisão do Funcionário"  name="dataAdmissao" class="form-control input-group datepicker" />
                                         </div>
-
 
                                         <div class="form-group">
                                             <label for="observacao">Observação</label>
-                                            <textarea id="observacao" class="form-control" name="observacao"  placeholder="Observação opcional sobre o Funcionário" type="text"></textarea>
+                                            <form:textarea path="observacao" id="observacao" class="form-control" name="observacao"  placeholder="Observação opcional sobre o Funcionário" type="text"/>
                                         </div>
 
                                         <button class="btn btn-primary" type="submit"> Salvar </button>
-                                        <a class="btn btn-secondary" href="${pageContext.request.contextPath}/app/animal/list"> Listar </a>
+                                        <a class="btn btn-secondary" href="${pageContext.request.contextPath}/app/funcionario/list"> Listar </a>
                                     </fieldset>
-                                </form>
+                                </form:form>
                             </div>
                         </div>
                     </div>

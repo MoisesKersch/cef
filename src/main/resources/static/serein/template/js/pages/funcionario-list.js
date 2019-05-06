@@ -1,5 +1,7 @@
 var table;
-var getListUrl = "app/funcionario/list";
+var getListUrl  = "app/funcionario/list";
+var addUrl = contextPath + "app/funcionario";
+var deleteUrl = contextPath + "app/funcionario/delete/";
 
 $(document).ready(function () {
     table()
@@ -31,11 +33,9 @@ function table() {
 
 function selectTableConfig(table) {
     genericTableId = getTableId(table);
-
     table.on( 'select deselect', function () {
         selectDeselectTable(table)
     });
-
     $(genericTableId + ' tbody').on(
         'dblclick',
         'tr',
@@ -47,11 +47,6 @@ function selectTableConfig(table) {
             window.location.href = contextPath
                 + "/admin/socio/socio?id=" + obj.id;
         });
-
-    // $(genericTableId).on( 'length.dt', function ( e, settings, newlen ) {
-    //     len = newlen;
-    //     table.ajax.reload();
-    // } );
 }
 
 function getTableId(table) {
@@ -60,85 +55,77 @@ function getTableId(table) {
 
 function selectDeselectTable(table) {
     var selectedRows = table.rows( { selected: true } ).count();
-    table.button( 1 ).enable( selectedRows > 0 && selectedRows < 2 );
+    table.buttons( [1, 2] ).enable( selectedRows > 0 && selectedRows < 2 );
 }
 
 function getButtons() {
     return  [ {
-        text: ' <i class="mdi mdi-file-check btn-icon-prepend"></i> Adicionar',
-        className: 'btn-sm btn-primary btn-icon-text',
+        text: ' <i class="mdi mdi-account-plus btn-icon-prepend"></i> Adicionar',
+        className: 'btn-sm btn btn-primary round  ',
         action: function(e, dt, node, config) {
-            window.location.href =  contextPath + getListUrl;
+            window.location.href =  addUrl;
         },
         enabled: true
     },
-
         {
-            text: '  Adicionar',
-            className: 'btn-sm  btn-danger',
+            text: ' <i class="mdi mdi-tooltip-edit btn-icon-prepend"></i> Editar',
+            className: 'btn-sm btn btn-dark round  box-shadow-2 px-2',
             action: function(e, dt, node, config) {
-                window.location.href =  contextPath + getListUrl;
+                var obj = dt.row( { selected: true } ).data();
+                window.location.href = addUrl + "?id="+obj.id;
             },
             enabled: false
         },
         {
-            text: ' <i class="mdi mdi-upload btn-icon-prepend"></i> Adicionar',
-            className: 'btn-sm  btn-danger',
+            text: ' <i class="mdi mdi-account-remove btn-icon-prepend"></i> Remover',
+            className: 'btn-sm btn btn-danger round  box-shadow-2 px-2',
             action: function(e, dt, node, config) {
-                window.location.href =  contextPath + getListUrl;
+                var obj = dt.row( { selected: true } ).data();
+                promtpRemove(obj.id)
             },
             enabled: false
         }];
 }
 
 function promtpRemove(id) {
-    swal({
-        title: "Remover",
-        text: "Tem certeza que deseja remover esse registro?",
-        icon: "warning",
-        buttons: {
-            cancel: {
-                text: "Não",
-                value: null,
-                visible: true,
-                className: "",
-                closeModal: true,
-            },
-            confirm: {
-                text: "Sim",
-                value: true,
-                visible: true,
-                className: "",
-                closeModal: true
-            }
-        }
-    })
-        .then((isConfirm) => {
-            if (isConfirm) {
+        Swal.fire({
+            type: 'warning',
+            html: HtmlSw("Remover", "Tem Certeza que deseja remover esse registro?"),
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: true,
+            confirmButtonText: "Sim",
+            cancelButtonText:  "Não",
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+        }).then((result) => {
+            if (result.dismiss === undefined)
                 remove(id)
-            } else {
-                swal("Cancelado", "Registro não removido!", "error");
-            }
-        });
+        })
 }
 
 function remove(id) {
     $.ajax({
-        type: "POST",
-        data: {
-            id: id
-        },
-        url: contextPath + "/admin/socio/post/remove",
+        type : "DELETE",
+        url : deleteUrl + id,
         success: function (obj) {
             if (obj === true) {
                 table.row({
                     selected: true
                 }).remove();
                 table.draw();
-                swal("Removido!", "Registro removido com sucesso.", "success");
+                Swal.fire({
+                    type: 'success',
+                    html: HtmlSw("Removido!", "Registro removido com sucesso."),
+                    focusConfirm: true,
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                })
             } else {
-                console.log(obj);
-                swal("Erro ao Remover!", "Desculpe, mas não foi possível remover esse registro!", "error");
+                Swal.fire({
+                    type: 'error',
+                    html: HtmlSw("Error!", "Desculpe, mas não foi possível remover esse registro!"),
+                    focusConfirm: true,
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                })
             }
         }
     })

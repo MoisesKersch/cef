@@ -1,5 +1,6 @@
 const saveUrl = contextPath + 'app/funcionario';
 const isCpfUrl = contextPath + 'app/funcionario/iscpf';
+const listUrl = contextPath + 'app/funcionario/list';
 const errorMessage = 'Ocorreu um erro ao tentar salvar o registro.';
 const confirmButton = 'Listar';
 const cancelButton = 'Cadastrar Outro Funcionário';
@@ -29,7 +30,8 @@ function datePicker() {
 }
 
 function save() {
-    $("#data-admissao").val( new Date(Date.parse($("#data-admissao").val())))
+    var data = $(formId).serializeObject();
+    data.dataAdmissao = new Date( moment(data.dataAdmissao, "DD-MM-YYYY"));
     var data = $(formId).serializeObject();
     var obj = saveFireSw('<h1>Tem certeza que deseja continuar?</h1>', '', saveUrl, data);
 }
@@ -46,19 +48,16 @@ function saveFireSw(title, text, url, data) {
         }
     }).then(function (obj) {
         return new Promise(resolve => {
-            if (obj.value != undefined) {
-                obj = obj.value;
-                if (!obj.hasError) {
-                    successAlert(obj, postSaveTitle, postSaveText, resolve, confirmButton, cancelButton)
-                } else {
-                    errorSwRegister(obj.error.error, '', obj)
-                }
+            if (obj) {
+                successAlert(obj, postSaveTitle, postSaveText, resolve, confirmButton, cancelButton)
+            } else {
+                errorSwRegister(obj, '', obj)
             }
         })
 
     }).then(function (r) {
         if (r) {
-            window.location.href = contextPath + "app/animal/list";
+            window.location.href = listUrl;
         } else {
             location.reload();
         }
